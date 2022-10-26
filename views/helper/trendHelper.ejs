@@ -1,0 +1,13 @@
+<% 
+    trendHelper = (collection, trend, id) => {
+        let xhtmlStatus = '';
+        let link       = systemConfig.admin + '/' + collection + '/change-special/' + id + '/' + trend ;
+        if(trend === "active") {
+            xhtmlStatus = '<span class="btn btn-info">TOP POST</span>';
+        }else if (trend === "inactive") {
+            xhtmlStatus = '<span class="btn btn-warning">Nomarl</span>';
+        }
+
+        return `<a href="${link}">${xhtmlStatus}</a>`;
+    }
+%>

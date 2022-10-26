@@ -1,0 +1,9 @@
+<% 
+    ImgHelper = (folder,imageName,alt = "Image") => {
+        let xhtmlImage = '';
+        if(imageName == null){
+            imageName = 'no-avatar.png';
+        }
+        return `<img src="${folder+imageName}" alt="${alt}" style="height:50px;border-radius: 5px;"/>`;
+    }
+%>

@@ -1,0 +1,74 @@
+<%
+    paginationHelper  = (paginaTionObj,type,currentStatus,search)=>{
+        let totalItem = paginaTionObj.totalItem;
+        let totalperPage = paginaTionObj.totalperPage;
+        let pageRange = paginaTionObj.pageRange;
+        let totalPages = Math.ceil(totalItem/totalperPage);
+        let currentPage = paginaTionObj.currentPage;  
+        let to = ((totalperPage * currentPage)>totalItem)  ?  totalItem  : totalperPage * currentPage;
+        let from = to - totalperPage + 1;
+        let xhtmlPagination = '';
+        if(to>totalItem) to = totalItem;
+
+        if(totalPages > 1){
+        let xhtmlStart = '';
+        let xhtmlPrevious = '';
+        let xhtmlPages = '';
+        let xhtmlNext = '';
+        let xhtmlEnd = '';
+      
+        let xhtmlLink = systemConfig.admin + '/'+ type + /status/ + currentStatus  ;
+        if(search !== '') xhtmlLink += '?search=' + search +'&page=';
+        else xhtmlLink += '?page=';
+        if(currentPage  > 1){
+          xhtmlStart = `<a class="btn btn-info" href="${xhtmlLink}">Start</a>`;
+          xhtmlPrevious = `<a class="btn btn-info" href="${xhtmlLink}${currentPage-1}"tabindex="-1" aria-disabled="true">Previous</a>`;
+        }   
+        if(currentPage  < totalPages){
+          xhtmlEnd = `<a class="btn btn-info" href="${xhtmlLink}${totalPages}" >End</a>`;
+          xhtmlNext = `<a class="btn btn-info" href="${xhtmlLink}${currentPage+1}"tabindex="-1" aria-disabled="true">Next</a>`;
+        }   
+        
+        let middle = Math.ceil(pageRange/2);
+        let min = currentPage - middle +1;
+        let max = min + pageRange - 1;
+
+        if(min <= 1){
+          min = 1;
+          max = pageRange;
+        }
+       
+        if( max >= totalPages){
+          max = totalPages;
+          min = ((max- pageRange + 1) >= 1) ? (max- pageRange + 1) : 1;
+        }
+       
+        
+        
+       
+        for(let i = min;i<= max;i++){
+         
+          if(i == currentPage){
+            xhtmlPages += `<a class="btn btn-dark"href="${xhtmlLink}${i}" >${i}</a>`;
+          }
+          else{
+            xhtmlPages += `<a class="btn btn-info"href="${xhtmlLink}${i}" >${i}</a>`;
+          }
+          
+        }
+        xhtmlPagination = '<ul class="pagination justify-content-center">'+xhtmlStart + xhtmlPrevious+ xhtmlPages + xhtmlNext + xhtmlEnd+'</ul>';
+    }
+        
+
+%>
+<%-xhtmlPagination%>
+<nav aria-label="Page navigation example">
+    <h5 class="alert alert-primary" style="float: right;padding: 6px">Total items: <%=totalItem%> </h5>
+   <h5 class="alert alert-primary" style="float: right;padding: 8px;">Total Page: <%=totalPages%> </h5>
+   <h5 class="alert alert-primary" style="float: right;padding: 10px;">Showing <%= from %> to <%= to %>  of  <%=totalItem%></h5>
+
+  </nav>
+
+<%        
+    }
+%>

@@ -1,0 +1,115 @@
+
+<% const folderThumb = './../../upload/thumb/' %>
+<% if(itemsTrend.length > 7){ %>
+    <div class="trending-area fix">
+        <div class="container">
+            <div class="trending-main">
+                <!-- Trending Tittle -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="trending-tittle">
+                            <strong>Trending now</strong>
+                            <!-- <p>Rem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
+                            <div class="trending-animated">
+                                <ul id="js-news" class="js-hidden">
+                                    <%itemsTrend.forEach((items)=>{ %>
+                                        <li class="news-item"><%=items.userName %></li>
+                                   <% }) %>
+                                  
+                                    
+                                </ul>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <!-- Trending Top -->
+                        <div class="trending-top mb-30">
+                            <div class="trend-top-img" style="width: 100%;height: 450px;">
+                                <a href="p/<%=itemsTrend[0].slug %>"><img src="<%=folderThumb+itemsTrend[0].thumb%>" alt="itemsTrend[0].thumb">
+                                <div class="trend-top-cap">
+                                    <span><%=itemsTrend[0].category.name %></span>
+                                    <h2><%=itemsTrend[0].userName %></a></h2>
+                                    <h4 style="color: azure;"><i class="fa fa-eye"> lượt xem: <%=itemsTrend[0].countView %></i></h3>
+                                    <h4 style="color: azure;""><%=moment(itemsTrend[0].crated.time).format("DD/MM/YYYY")%></a></h4>
+                                </div>
+                            </a>
+                            </div>
+                        </div>
+                        <!-- Trending Bottom -->
+                        <div class="trending-bottom">
+                            <div class="row">
+                               
+                                <div class="col-lg-4">
+                                    <div class="single-bottom mb-35">
+                                        <a href="p/<%=itemsTrend[1].slug %>"> 
+                                        <div class="trend-bottom-img mb-30">
+                                            <img src="<%=folderThumb+itemsTrend[1].thumb%>"style="height:150px" alt="">
+                                        </div>
+                                        <div class="trend-bottom-cap">
+                                            <span class="color3"><%=itemsTrend[1].category.name %></span>
+                                            <h4><%=itemsTrend[1].userName %></h4>
+                                        </div>
+                                    </a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="single-bottom mb-35">
+                                        <a href="p/<%=itemsTrend[2].slug %>"> 
+                                        <div class="trend-bottom-img mb-30">
+                                            <img src="<%=folderThumb+itemsTrend[2].thumb%>" style="height:150px"alt="">
+                                        </div>
+                                        <div class="trend-bottom-cap">
+                                            <span class="color3"><%=itemsTrend[2].category.name %></span>
+                                            <h4><%=itemsTrend[2].userName %></h4>
+                                        </div>
+                                    </a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="single-bottom mb-35">
+                                        <a href="p/<%=itemsTrend[3].slug %>"> 
+                                        <div class="trend-bottom-img mb-30">
+                                            <img src="<%=folderThumb+itemsTrend[3].thumb%>"style="height:150px" alt="">
+                                        </div>
+                                        <div class="trend-bottom-cap">
+                                            <span class="color3"><%=itemsTrend[3].category.name %></span>
+                                            <h4><%=itemsTrend[3].userName %></h4>
+                                        </div>
+                                    </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Riht content -->
+                    <div class="col-lg-4">
+                        <% for(let i = 4; i < itemsTrend.length; i++){ %>  <!-- array begin with 4, if > 4, show data to frontend -->
+                            <a href="p/<%=itemsTrend[i].slug %>">
+                            <div class="trand-right-single d-flex">
+                              
+                                <div class="trand-right-img">
+                                    <img src="<%=folderThumb+itemsTrend[i].thumb%>" style="width: 120px;height: 100px;" alt="<%=itemsTrend[i].userName %>">
+                                </div>
+                                <div class="trand-right-cap">
+                                    <span class="color1"><%=itemsTrend[i].category.name %></span>
+                                    <h4><%=itemsTrend[i].userName %></h4>
+                                </div>
+                          
+                            </div>
+                        </a>
+                        <%} %>
+                       
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+<% } %>
+    

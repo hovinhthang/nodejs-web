@@ -1,0 +1,52 @@
+<% include ./../../elements/linkref %>
+<% include ./../../elements/sidebar-wrapper %>
+<% include ./../../elements/header %>
+<style>
+    
+</style>
+
+  <body class="dark-edition"> 
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-8">
+              <div class="form-group"style="float:right;height: 100%;">
+                <!-- Upload  -->
+                <form class="" action="/upload" method="post">
+
+                  <textarea name="name" ></textarea>            
+                  <button class="btn btn-lg">Save</button>
+                  
+                  </form>
+
+              
+</div>
+
+
+
+</div>
+</div>
+</div>
+  </body>
+  
+  <script>
+    function go(content) {
+
+      delimiter=","   // comma but you can set any character here.
+
+      phones=content.split(delimiter);
+
+      //  now the phones of the textbox are in an array with separate values.
+
+      phones.forEach(function(value, index) {   
+          //  Here you can handle each item.
+          //
+          //  Example:
+          document.write('item: ' + phones[index] + '<br>');    
+      });
+
+      //  you can submit the form from here, or whatever you want.
+
+      }
+  </script>
+
+<% include ./../../elements/script %>  

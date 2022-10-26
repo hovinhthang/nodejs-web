@@ -1,0 +1,69 @@
+<% include ./../../elements/linkref %>
+<% include ./../../elements/sidebar-wrapper %>
+<% include ./../../elements/header %>
+<% include ./../../helper/selbox %>
+<% include ./../../helper/defaultIMG %>
+<%
+const pathAvatar = './../../../upload/users/';
+%>
+
+  <body class="dark-edition"> 
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-8">
+              <div class="form-group"style="float:right;height: 100%;"enctype="multipart/form-data">
+                <form action="/erp/users/save" method="POST" enctype="multipart/form-data">
+                  
+                    <label for="fname"class="form-control">Tên người dùng </label>
+                  <input type="text" id="fname" class="form-control" name="username" value="<%=item.username  %>"><br><br>
+                  <label for="fname"class="form-control">Mật khẫu</label>
+                  <input type="text" id="passWord" class="form-control" name="password" value="<%=item.password  %>"><br><br>
+                  <label for="fname"class="form-control">Slug</label>
+                  <input type="text" id="slug" class="form-control" name="slug" value="<%=item.slug  %>"><br><br>
+              
+                  <label for="lname"class="form-control">Ordering</label>
+                  <input type="text" id="Ordering"class="form-control" name="ordering" value="<%=item.ordering  %>"><br><br>
+                  <%if(item.id !== undefined && item.id !== ''){%>
+                    <label class="form-control"> Avatar</label>
+                    <%-ImgHelper(pathAvatar, item.avatar, item.username) %>
+                  <%}%>
+                  <select name="status"class="form-control" >
+                    <option value="novalue">Choose Status</option>
+                    <option value="active"<%=(item.status == "active") ? 'selected="selected"' : '' %> >Active</option>
+                    <option value="inactive" <%=(item.status == "inactive") ? 'selected="selected"' : '' %>>Inactive</option>
+                  </select>
+                  <%- selectBoxHelper('group',groupsItems,item.group) %>
+                  <label for="formFileLg" class="btn btn-primary">Select file</label>
+                  <input class="form-control form-control-lg" id="formFileLg" name="avatar" type="file" />
+                  <textarea name="content"id="editor"placeholder="Enter text here..."><%=item.content%></textarea>
+                  <script>CKEDITOR.replace( 'editor' );</script>
+                  <input class="form-control" name="id" value="<%= item._id %>" type="hidden">
+                  <input class="form-control" name="dfImg" value="<%= item.avatar %>" type="hidden">
+                  <input class="form-control" name="group_name" value="<%=item.group.name %>" type="hidden">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                 
+                </form>
+
+              
+</div>
+
+
+
+</div>
+</div>
+</div>
+  </body>
+  <div class="col-md-8">
+  <h3 style="float:right;color: beige;">
+  <% if(errors){ %>
+  
+                      <% errors.forEach((error)=>{ %>
+                        <li> <%= error.param %>: <%= error.msg %></li>
+                        <% })%>
+    <%}%>
+  </h3>
+</div>
+<h3 style="display:none;"><%= JSON.stringify(item)  %></h3>
+
+
+<% include ./../../elements/script %>  

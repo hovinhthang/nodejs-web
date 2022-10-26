@@ -1,0 +1,8 @@
+<% 
+    usersHelper = (collection,group_acp,id) => {
+        let link       = systemConfig.admin + '/' + collection + '/change-groups-acp/' + id + '/' + group_acp ;
+        let classGroups = (group_acp == 'yes') ? 'fa-check-square-o': 'fa fa-ban';
+        return `<a href="${link}" class="fa ${classGroups} fa-lg"></a>`
+    }
+%>
+

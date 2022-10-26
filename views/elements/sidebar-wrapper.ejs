@@ -1,0 +1,75 @@
+
+<div class="wrapper ">
+    <div class="sidebar" data-color="purple" data-background-color="black" data-image="../assets/img/sidebar-2.jpg">
+<div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
+   <%= systemConfig.admin %>
+  </a></div>
+<div class="sidebar-wrapper">
+  <ul class="nav">
+    <li class="nav-item  ">
+      <a class="nav-link" href="/<%= systemConfig.admin %>">
+        <i class="material-icons">dashboard</i>
+        <p>Dashboard</p>
+      </a>
+    </li>
+    <li class="nav-item ">
+      <a class="nav-link" href="/<%= systemConfig.admin %>/auth/logout">
+        <i class="material-icons">person</i>
+        <p>Log out System</p>
+      </a>
+    </li>
+    <li class="nav-item ">
+      <a class="nav-link" href="/<%= systemConfig.admin %>/items/">
+        <i class="material-icons">person</i>
+        <p>Setting Social</p>
+      </a>
+    </li>
+    <li class="nav-item ">
+      <a class="nav-link" href="/<%= systemConfig.admin %>/contact/">
+        <i class="material-icons">person</i>
+        <p>Message Contact</p>
+      </a>
+    </li>
+    <li class="collapse navbar-collapse ">
+      <a class="nav-link" href="/<%= systemConfig.admin %>/items/form">
+        <i class="material-icons">content_paste</i>
+        <p>CRUD</p>
+      </a>
+    </li>
+
+    <i class="material-icons">notifications</i>
+    <button class="navbar-toggler" type="text" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" style="color: aliceblue;">
+        User Manage
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+       
+        <li class="nav-item ">
+          <a class="nav-link" href="/<%= systemConfig.admin %>/users/">
+            <i class="material-icons">face</i>
+            <p>Users</p>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="/<%= systemConfig.admin %>/groups/">
+            <i class="material-icons">bubble_chart</i>
+            <p>Group</p>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="/<%= systemConfig.admin %>/category/">
+            <i class="material-icons">bubble_chart</i>
+            <p>category</p>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="/<%= systemConfig.admin %>/article/">
+            <i class="material-icons">bubble_chart</i>
+            <p>Blog</p>
+          </a>
+        </li>
+         </div>
+ 
+   
+</ul>
+</div>
+</div>

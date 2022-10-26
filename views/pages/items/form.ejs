@@ -1,0 +1,40 @@
+<% include ./../../elements/linkref %>
+<% include ./../../elements/sidebar-wrapper %>
+<% include ./../../elements/header %>
+  <body class="dark-edition"> 
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-8">
+              <div class="form"style="float:right;height: 100%;">
+                <form action="/erp/items/save" method="POST">
+                  <label for="fname">Social name:</label>
+                  <input type="text" id="fname" name="name" value="<%=item.name  %>"><br><br>
+                  <label for="link">Social link:</label>
+                  <input type="text" id="link" name="link" value="<%=item.link  %>"><br><br>
+                  <label for="slbox">Status</label>
+                  <select name="status" >
+                    <option value="novalue">Choose Status</option>
+                    <option value="active"<%=(item.status == "active") ? 'selected="selected"' : '' %> >Active</option>
+                    <option value="inactive" <%=(item.status == "inactive") ? 'selected="selected"' : '' %>>Inactive</option>    <input class="form-control" name="id" value="<%= item.id %>" type="hidden">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+
+              
+</div>
+
+
+
+</div>
+</div>
+</div>
+  </body>
+  <h3 style="float:right">
+  <% if(errors){ %>
+  
+                      <% errors.forEach((error)=>{ %>
+                        <li> <%= error.param %>: <%= error.msg %></li>
+                        <% })%>
+    <%}%>
+  </h3>
+<h3 style="display:none;"><%= JSON.stringify(item)  %></h3>
+<% include ./../../elements/script %> 
