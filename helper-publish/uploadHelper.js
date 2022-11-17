@@ -8,7 +8,7 @@ let uploadFile = (field,folderDes = './public/upload/users') =>{
     },
   
     filename:  (req, file, cb) => {
-        var test = 'noah';
+        var test = 'hvt';
       const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
   
       cb(null, file.fieldname + '-' + test +'-'+ uniqueSuffix +'-'+ path.extname(file.originalname));

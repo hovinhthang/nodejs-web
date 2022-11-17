@@ -12,4 +12,5 @@ router.use('/p',require('./post'))
 router.use('/contact',require('./contact'))
 /* GET about page. */
 router.use('/about',require('./about'))
+router.use('/search',require('./search'))
 module.exports = router;

@@ -1,74 +1,68 @@
-const itemModel = require('./../schemas/contact');
+const itemModel = require("./../schemas/contact");
 
 module.exports = {
-    listItems : (params,options = null )=>{
-        let obj = {};
-      
-    if(params.currentStatus !=='all')   obj.status = params.currentStatus;
-    if(params.search !== '')  obj.name = new RegExp(params.search,'i');
-      
-      return itemModel
-        .find(obj)
-        .sort({_id:'descending'})
-        .select('name status crated content email title')
-        .skip((params.paginaTion.currentPage-1)    *   params.paginaTion.totalperPage)
-        .limit(params.paginaTion.totalperPage);
-    },
-    getItem : (id)=>{
-       return itemModel.findOne({_id:   id});
-    }, 
-    listItemSocial : (params = null, options = null)=>{ 
-        if(options.task == 'list-social'){
-            return itemModel.find({status: 'active'})
-            .select('name link')
-            .limit(4)
-            
-        }
-    },
+	listItems: (params, options = null) => {
+		let obj = {};
 
-    countItem : (params,options = null)=>{
-       return itemModel.countDocuments(params.obj);
-    },
-    changeStatus : (id,currentStatus = null)=>{
-       
-        let status        = (currentStatus === "active")    ?   "inactive"  :   "active";
-        let data          = {
-            status:status,
-            modified: {
-                user_id :   0,
-                user_name: 0,
-                time: Date.now()
-            }
-        }
-        return  itemModel.updateOne({_id:   id},data);
-     },
-    deleteItem : (id,options = null)=>{
-     return itemModel.deleteOne({_id:   id});
-     },
-     saveItem : (item,options = null)=>{
-            if(options.task == "add"){
-                item.crated = {
-                 
-                    time: Date.now(),
-                }
-              return new itemModel(item).save();
-              }
-        //       if(options.task == "edit"){
-     
+		if (params.currentStatus !== "all") obj.status = params.currentStatus;
+		if (params.search !== "") obj.name = new RegExp(params.search, "i");
 
-        //         return itemModel.updateOne({_id: item.id},{
-        //              name:item.name, 
-        //              slug:item.slug,
-        //              status: item.status,
-        //              link:item.link,
-        //              modified: {
-        //                  user_id: 0,
-        //                  user_name : 0,
-        //                  time: Date.now()
-        //              }
-        //          });  
-        // }
-      
-   },
-   
-}
+		return itemModel
+			.find(obj)
+			.sort({ _id: "descending" })
+			.select("name status crated content email title")
+			.skip(
+				(params.paginaTion.currentPage - 1) * params.paginaTion.totalperPage
+			)
+			.limit(params.paginaTion.totalperPage);
+	},
+	getItem: (id) => {
+		return itemModel.findOne({ _id: id });
+	},
+	listItemSocial: (params = null, options = null) => {
+		if (options.task == "list-social") {
+			return itemModel.find({ status: "active" }).select("name link").limit(4);
+		}
+	},
+
+	countItem: (params, options = null) => {
+		return itemModel.countDocuments(params.obj);
+	},
+	changeStatus: (id, currentStatus = null) => {
+		let status = currentStatus === "active" ? "inactive" : "active";
+		let data = {
+			status: status,
+			modified: {
+				user_id: 0,
+				user_name: 0,
+				time: Date.now(),
+			},
+		};
+		return itemModel.updateOne({ _id: id }, data);
+	},
+	deleteItem: (id, options = null) => {
+		return itemModel.deleteOne({ _id: id });
+	},
+	saveItem: (item, options = null) => {
+		if (options.task == "add") {
+			item.crated = {
+				time: Date.now(),
+			};
+			return new itemModel(item).save();
+		}
+		//       if(options.task == "edit"){
+
+		//         return itemModel.updateOne({_id: item.id},{
+		//              name:item.name,
+		//              slug:item.slug,
+		//              status: item.status,
+		//              link:item.link,
+		//              modified: {
+		//                  user_id: 0,
+		//                  user_name : 0,
+		//                  time: Date.now()
+		//              }
+		//          });
+		// }
+	},
+};

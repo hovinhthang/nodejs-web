@@ -41,7 +41,7 @@ module.exports = {
             if(options.task == "add"){
                 item.crated = {
                     user_id: 0,
-                    user_name : "AssMin",
+                    user_name : "AdMin",
                     time: Date.now(),
                 }
               return new itemModel(item).save();
@@ -70,7 +70,7 @@ module.exports = {
         group_acp:groupsACP,
         modified: {
             user_id :   0,
-            user_name: "Assmin",
+            user_name: "Admin",
             time: Date.now()
         }
     }  

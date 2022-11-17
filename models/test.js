@@ -91,7 +91,7 @@ module.exports = {
             group_acp:UsersACP,
             modified: {
                 user_id :   0,
-                user_name: "Assmin",
+                user_name: "Admin",
                 time: Date.now()
             }
         }
@@ -120,7 +120,7 @@ module.exports = {
                
                 item.crated = {
                     user_id: 0,
-                    user_name : "AssMin",
+                    user_name : "Admin",
                     time: Date.now(),
                 }
             

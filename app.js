@@ -13,7 +13,6 @@ const databaseConfig = require('./configs/database');
 const session = require('express-session');
 
 // Connect database MongoDatabase
-//mongoose.connect(`mongodb+srv://${databaseConfig.username}:${databaseConfig.password}@erp.lgvnl.mongodb.net/${databaseConfig.database}`,{useNewUrlParser: true ,useUnifiedTopology:true,useCreateIndex:true,useFindAndModify: false});
 mongoose.connect(`mongodb+srv://${databaseConfig.username}:${databaseConfig.password}@test.0hujwog.mongodb.net/${databaseConfig.database}`,{useNewUrlParser: true ,useUnifiedTopology:true,useCreateIndex:true,useFindAndModify: false});
 mongoose.connection
   .once('open', function(){
